@@ -1,0 +1,44 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+//import org.openqa.selenium.edge.EdgeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class Hello {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Invoking Browser
+
+		//Chrome - ChromeDriver exten->Methods close get
+
+		//Firefox- FirefoxDriver ->methods close get
+
+		// WebDriver  close  get
+
+		//WebDriver methods + class methods
+
+		
+		//Invoking the Browser
+		//With Chrome >>ChromeDriver>>methods
+		
+		ChromeOptions options = new ChromeOptions ();
+		options.addArguments("--remote-allow-origins=*");
+
+		
+		System.setProperty("Webdriver.chrome.driver", "Desktop.exe");
+		WebDriver driver=new ChromeDriver(options);
+		driver.get("https://www.guru99.com/equivalence-partitioning-boundary-value-analysis.html");
+		System.out.println(driver.getTitle());
+		System.out.println(driver.getCurrentUrl());
+		//Cannot using close and quit together
+		driver.close();//close only the current page
+		driver.quit();//Close all associated pages
+		
+		
+
+	}
+
+}
