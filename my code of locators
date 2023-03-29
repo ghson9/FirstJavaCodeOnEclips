@@ -1,0 +1,105 @@
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+//import org.openqa.selenium.edge.EdgeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class Locators {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		ChromeOptions options = new ChromeOptions ();
+		options.addArguments("--remote-allow-origins=*");
+
+		
+		System.setProperty("Webdriver.chrome.driver", "Desktop.exe");
+		WebDriver driver=new ChromeDriver(options);
+		driver.get("https://rahulshettyacademy.com/locatorspractice/");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+		
+		//Starting do the Locators
+		
+		//User Name
+		driver.findElement(By.id("inputUsername")).sendKeys("Ghson");
+		//findElement() >> To find the wanted element
+		//By.id() >> To select ,find the element by what? >> from inspect > select the element > find the ID > take the Id which is here was "inputUsername"
+		//sendKeys() >> To send the value To test it, To type things inside the filed
+		
+		//Password
+		driver.findElement(By.name("inputPassword")).sendKeys("123");
+		//By.name() >> To select ,find the element by what? >> from inspect > select the element > find the Name > take the Name which is here was "inputPassword"
+
+		
+		//sign in
+		driver.findElement(By.className("signInBtn")).click();
+		//By.className() >> To select ,find the element by what? >> from inspect > select the element > find the class Name > take the className which is here was "signInBtn"
+		//Note .There is tow class for this element (signInBtn and submit) ,should to chose one of them ,all locate this element
+		//click() >> Action for do the clicking
+		
+		//The error message testing
+		System.out.println(driver.findElement(By.cssSelector("p.error")).getText());
+		//By.cssSelector() >> To select ,find the element by what? >> from inspect > select the element > find the cssSelector(adding extinction to google chrome to find out if the element is unique or not) > take the cssSelector which is here was "p.error"
+		//p.error >> is tagname.classname 
+		
+		driver.findElement(By.linkText("Forgot your password?")).click();
+		
+		//for the issue of the not clicked on the reset login button the issue was on the schooling the screen so the solution is to wait 1sec ...
+		Thread.sleep(1000);//wait 1 sec ...
+
+		// xpath method
+		//By using the method Tagname[attribute=’value’]
+		//Name
+		driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("Ghson");
+		//Email
+		driver.findElement(By.xpath("//input[@placeholder='Email']")).sendKeys("Gh@gmail.com");
+		//Phone Number
+		driver.findElement(By.xpath("//input[@placeholder='Phone Number']")).sendKeys("1234567890");
+		
+		
+		//By using the method input#inputUsername and Tagname[@attribute=’value’]:nth-child(index). -  Child items
+		//By using Css
+		//using clear method
+		//driver.findElement(By.cssSelector("input[placeholder='Email']")).clear();
+		
+		driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
+
+		System.out.println(driver.findElement(By.cssSelector("form p")).getText());
+		
+		
+
+		/*Css Selector-
+
+•	Class name -> tagname.classname ->  Button.signInBtn -> .error
+
+•	Id -> tagname#id      ->   input#inputUsername
+
+•	Tagname[attribute=’value’]
+
+<input type="text" placeholder="Username” value=" ">
+
+Input [placeholder=’ Username’]
+
+•	//Tagname[@attribute=’value’]:nth-child(index). -  Child items
+•	Parenttagname childtagname
+•	input[type*='pass'] – CSS
+•	tagname
+*/
+		
+		
+		
+		
+
+		
+		
+		
+		
+		
+	}
+
+}
