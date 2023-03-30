@@ -17,10 +17,10 @@ public class Locators {
 		options.addArguments("--remote-allow-origins=*");
 
 		
-		System.setProperty("Webdriver.chrome.driver", "Desktop.exe");
+		System.setProperty("Webdriver.chrome.driver", "Desktop.exe"); //Open the browser 
 		WebDriver driver=new ChromeDriver(options);
-		driver.get("https://rahulshettyacademy.com/locatorspractice/");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.get("https://rahulshettyacademy.com/locatorspractice/");//Hit the URL
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));//The transactions
 
 		
 		//Starting do the Locators
@@ -85,6 +85,8 @@ public class Locators {
 		driver.findElement(By.id("chkboxOne")).click();
 
 		driver.findElement(By.xpath("//button[contains(@class,'submit')]")).click();
+		
+		
 		
 		
 
